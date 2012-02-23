@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title>Backbone Custom Getters and Setters</title>
+    <link href="style.css" media="all" rel="stylesheet" type="text/css"/>
+    <script src="https://raw.github.com/documentcloud/backbone/master/test/vendor/json2.js"></script>
+    <script src="https://raw.github.com/documentcloud/backbone/master/test/vendor/jquery-1.7.1.js"></script>
+    <script src="https://raw.github.com/documentcloud/backbone/master/test/vendor/underscore-1.3.1.js"></script>
+    <script src="https://raw.github.com/documentcloud/backbone/master/backbone-min.js"></script>
+    <script src="backbone.getters.setters.js"></script>
+  </head>
+
+	<body>
+
+		<div id="setter_output">
+			<h1>Getter examples</h1>
+			<p><strong>Using a getter to get the fullname:</strong></p>
+			<p id="getter1"></p>
+		</div>
+
+		<div id="setter_output">
+			<h1>Setter examples</h1>
+			<p><strong>Using a setter to lowercase all letters, value set by the defaults hash:</strong></p>
+			<p id="setter1"></p>
+
+			<p><strong>Using a setter to increase by 2, value set manually:</strong></p>
+			<p id="setter2"></p>
+
+			<p><strong>Using a setter to lowercase all letters and increase by 2 with one call:</strong></p>
+			<p id="setter3"></p>
+		</div>
+
+		<script>
+		$(function() {
+			var MyModel = Backbone.GSModel.extend({
+				defaults: {
+					name: 'WAS UPPERCASE',
+					firstName: 'Tal',
+					lastName: 'Bereznitskey'
+				},
+				
+				getters: {
+					fullName: function() {
+						return this.get('firstName') + ' ' + this.get('lastName');
+					}
+				},
+				
+				setters: {
+					name: function(value) {
+						return value.toLowerCase();
+					},
+					number: function(value) {
+						return value + 2;
+					}
+				}
+			});
+			
+			var model = new MyModel();
+
+			// Show the full name
+			$('#getter1').append(model.get('fullName'));
+			
+			// Show the value of 'name', it should be lowercased
+			$('#setter1').append(model.get('name'));
+			
+			// Show the value of 'number', it should be 7 after the setter
+			model.set('number', 5);
+			$('#setter2').append(model.get('number'));
+
+			// Show the value of 'name' and 'number', it should be lowercased and 102
+			model.set({
+				name: 'THE FOLLOWING NUMBER SHOULD BE 102: ',
+				number: 100
+			});
+			$('#setter3').append(model.get('name') + model.get('number'));
+			
+			
+		});			
+		</script>
+	</body>
+
+</html>
