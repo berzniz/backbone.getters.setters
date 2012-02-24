@@ -95,7 +95,7 @@ You can also set multiple attributes as regular:
 ```js
 someModel.set({
   'firstName': 'everything',
-  'lastName', 'NUMBERS'
+  'lastName': 'NUMBERS'
 });
 ```
 
