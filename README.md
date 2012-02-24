@@ -74,15 +74,9 @@ var MyModel = Backbone.GSModel.extend({
 
 In the above example, the setters were already called by the defaults hash.
 
-The value of 'firstName' is not 'LADY', the value of 'lastName' is not 'gaga'. Don't trust me, just get them and see:
+The value of 'firstName' is now 'LADY', the value of 'lastName' is now 'gaga'.
 
-```js
-var someModel = new MyModel();
-alert(someModel.get('firstName'));
-alert(someModel.get('lastName'));
-```
-
-You can call the set method yourself:
+You can also call the set method as usual:
 
 ```js
 someModel.set('firstName', 'letters');
