@@ -17,6 +17,8 @@
 			<h1>Getter examples</h1>
 			<p><strong>Using a getter to get the fullname:</strong></p>
 			<p id="getter1"></p>
+			<p><strong>Using a getter to get the fullname, formatted as "initials":</strong></p>
+			<p id="getter2"></p>
 		</div>
 
 		<div id="setter_output">
@@ -29,6 +31,9 @@
 
 			<p><strong>Using a setter to lowercase all letters and increase by 2 with one call:</strong></p>
 			<p id="setter3"></p>
+
+			<p><strong>Using a setter with "power_of_ten" formatter:</strong></p>
+			<p id="setter4"></p>
 		</div>
 
 		<script>
@@ -39,31 +44,38 @@
 					firstName: 'Tal',
 					lastName: 'Bereznitskey'
 				},
-				
+
 				getters: {
-					fullName: function() {
+					fullName: function(format) {
+						if ( format == 'initials' )
+							return this.get('firstName').substr(0, 1) + '. ' + this.get('lastName').substr(0, 1) + '.';
 						return this.get('firstName') + ' ' + this.get('lastName');
 					}
 				},
-				
+
 				setters: {
 					name: function(value) {
 						return value.toLowerCase();
 					},
-					number: function(value) {
+					number: function(value, format) {
+						if ( format == 'power_of_ten' )
+							value = Math.pow(10, value);
 						return value + 2;
 					}
 				}
 			});
-			
+
 			var model = new MyModel();
 
 			// Show the full name
 			$('#getter1').append(model.get('fullName'));
-			
+
+			// Show the full name, formatted
+			$('#getter2').append(model.get('fullName', 'initials'));
+
 			// Show the value of 'name', it should be lowercased
 			$('#setter1').append(model.get('name'));
-			
+
 			// Show the value of 'number', it should be 7 after the setter
 			model.set('number', 5);
 			$('#setter2').append(model.get('number'));
@@ -74,9 +86,12 @@
 				number: 100
 			});
 			$('#setter3').append(model.get('name') + model.get('number'));
-			
-			
-		});			
+
+			// Show the value 'number', it should be 10000
+			model.set('name', 'THE FOLLOWING NUMBER SHOULD BE 10002: ');
+			model.set('number', 4, 'power_of_ten');
+			$('#setter4').append(model.get('name') + model.get('number'));
+		});
 		</script>
 	</body>
 
