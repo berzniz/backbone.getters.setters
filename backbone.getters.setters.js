@@ -10,6 +10,8 @@ Backbone.GSModel = Backbone.Model.extend({
 	},
 
 	set: function(key, value, options) {
+		var attrs, attr;
+
 		// Normalize the key-value into an object
 		if (_.isObject(key) || key == null) {
 			attrs = key;
