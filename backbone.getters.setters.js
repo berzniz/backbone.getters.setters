@@ -24,7 +24,7 @@ Backbone.GSModel = Backbone.Model.extend({
 		// Go over all the set attributes and call the setter if available
 		for (attr in attrs) {
 			if (_.isFunction(this.setters[attr])) {
-				attrs[attr] = this.setters[attr].call(this, attrs[attr]);
+				attrs[attr] = this.setters[attr].call(this, attrs[attr], options);
 			}
 		}
 
