@@ -5,7 +5,7 @@ Backbone.GSModel = Backbone.Model.extend({
 		if (_.isFunction(this.getters[attr])) {
 			return this.getters[attr].call(this);
 		}
-		
+
 		return Backbone.Model.prototype.get.call(this, attr);
 	},
 
@@ -21,6 +21,10 @@ Backbone.GSModel = Backbone.Model.extend({
 			attrs[key] = value;
 		}
 
+		// always pass an options hash around. This allows modifying
+		// the options inside the setter
+		options = options || {};
+
 		// Go over all the set attributes and call the setter if available
 		for (attr in attrs) {
 			if (_.isFunction(this.setters[attr])) {
@@ -30,9 +34,9 @@ Backbone.GSModel = Backbone.Model.extend({
 
 		return Backbone.Model.prototype.set.call(this, attrs, options);
 	},
-	
+
 	getters: {},
-	
+
 	setters: {}
-	
+
 });
