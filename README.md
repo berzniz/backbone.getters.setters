@@ -60,7 +60,7 @@ var MyModel = Backbone.GSModel.extend({
     	firstName: function(value) {
 		    return value.toUpperCase();
 	    },
-      lastName:: function(value) {
+        lastName: function(value) {
   	    return value.toLowerCase();
 	    }
   },
