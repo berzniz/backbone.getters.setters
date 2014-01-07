@@ -1,0 +1,17 @@
+{
+  "name": "backbone.getters.setters",
+  "main": "backbone.getters.setters.js",
+  "version": "0.0.1",
+  "homepage": "https://github.com/berzniz/backbone.getters.setters",
+  "authors": [
+    "Tal Bereznitskey"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
