@@ -1,0 +1,29 @@
+{
+  "name": "backbone.getters.setters",
+  "version": "0.0.1",
+  "description": "Adds custom getters and setters to Backbone.js models",
+  "main": "backbone.getters.setters.js",
+  "directories": {
+    "example": "example"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "peerDependencies": {
+    "backbone": "~0.9.1"
+  },
+ "repository": {
+    "type": "git",
+    "url": "https://github.com/berzniz/backbone.getters.setters.git"
+  },
+  "keywords": [
+    "backbone.js",
+    "getters and setters"
+  ],
+  "author": "Tal Bereznitskey",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/berzniz/backbone.getters.setters/issues"
+  },
+  "homepage": "https://github.com/berzniz/backbone.getters.setters"
+}
