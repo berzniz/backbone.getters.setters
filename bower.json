@@ -13,9 +13,9 @@
     "bower_components",
     "test",
     "tests"
-  ]
+  ],
   "dependencies" : {
-    "backbone": "~0.9.1"
+    "backbone": "~0.9.1",
     "underscore": "~1.5.1"
   }
 }
