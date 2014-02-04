@@ -1,6 +1,9 @@
+/*jslint nomen: true*/
+/*global Backbone, _ */
+
 Backbone.GSModel = Backbone.Model.extend({
 
-	get: function(attr) {
+	get: function (attr) {
 		// Call the getter if available
 		if (_.isFunction(this.getters[attr])) {
 			return this.getters[attr].call(this);
@@ -9,11 +12,11 @@ Backbone.GSModel = Backbone.Model.extend({
 		return Backbone.Model.prototype.get.call(this, attr);
 	},
 
-	set: function(key, value, options) {
+	set: function (key, value, options) {
 		var attrs, attr;
 
 		// Normalize the key-value into an object
-		if (_.isObject(key) || key == null) {
+		if (_.isObject(key) || key === null) {
 			attrs = key;
 			options = value;
 		} else {
