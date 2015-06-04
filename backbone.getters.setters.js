@@ -34,6 +34,15 @@ Backbone.GSModel = Backbone.Model.extend({
 
 		return Backbone.Model.prototype.set.call(this, attrs, options);
 	},
+	toJSON : function () {
+            var gettersJSON = {};
+            _.each(this.getters,function (getter,name) {
+                if (_.isFunction(getter)) {
+                    gettersJSON[name] = getter.call(this);
+                }
+            }.bind(this));
+            return _.extend(Backbone.Model.prototype.toJSON.apply(this,arguments),gettersJSON);
+        }
 
 	getters: {},
 
